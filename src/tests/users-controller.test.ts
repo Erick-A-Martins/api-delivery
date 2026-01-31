@@ -3,10 +3,10 @@ import { prisma } from "@/database/prisma.js";
 import { app } from "@/app.js";
 
 describe("UsersController", () => {
-    let user_id: string
+    let user_id: string;
 
     afterAll(async () => {
-        await prisma.user.delete({ where: { id: user_id } });
+        await prisma.user.delete({ where: { id: user_id }, });
     });
 
     it("should create a new user successfully", async () => {
@@ -22,4 +22,14 @@ describe("UsersController", () => {
 
         user_id = response.body.id;
     })
+
+    it("should throw an error if user with same email already exists", async () => {
+        const response = await request(app).post("/users").send({
+            name: "Duplicate User",
+            email: "testuser@example.com",
+            password: "password123",
+        });
+
+        expect(response.status).toBe(400);
+    });
 })
