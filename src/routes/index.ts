@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { usersRoutes } from "./users-routes.js";
-import { sessionsRoutes } from "./sessions-routes.js";
-import { deliveriesRoutes } from "./deliveries-routes.js";
-import { deliveryLogsRoutes } from "./delivery-logs-routes.js";
+import { usersRoutes } from "@/routes/users-routes.js";
+import { sessionsRoutes } from "@/routes/sessions-routes.js";
+import { deliveriesRoutes } from "@/routes/deliveries-routes.js";
+import { deliveryLogsRoutes } from "@/routes/delivery-logs-routes.js";
 
 const routes = Router();
 
